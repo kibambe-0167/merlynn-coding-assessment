@@ -44,3 +44,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
+# my text
+curl "https://api.up2tom.com/v3/models/Drink choice"
+  -H "Authorization: Token 9307bfd5fa011428ff198bb37547f979"
+  -H "Content-Type: application/vnd.api+json"

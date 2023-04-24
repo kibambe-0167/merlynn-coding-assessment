@@ -24,8 +24,8 @@ function App() {
   //
   return (
     <Provider store={store}>
-      <h1 className="text-5xl text-black font-medium">
-        merlynn coding assessment
+      <h1 className="text-5xl bg-blue-950 py-5 px-3 text-gray-300 font-medium">
+        Merlynn Coding Assessment
       </h1>
 
       {apidata && (
@@ -37,15 +37,49 @@ function App() {
         </div>
       )}
 
-      <div className="bg-red-950 w-8/12 my-5 10 mx-auto px-4 py-4 rounded-xl">
-
-
-        <div className="my-5" >
-          <input className="p-2 rounded-md" placeholder="Temperature" min={-10} max={45} type="number" />
+      <div className="bg-blue-900 shadow-slate-950 w-8/12 my-5 mx-auto px-4 py-4 rounded-2xl">
+        <div className="my-5">
+          <input
+            className="p-2 w-full rounded-md"
+            placeholder="Age?"
+            min={1}
+            max={90}
+            type="number"
+          />
         </div>
 
-        <div>
-          <select>
+        <div className="my-5">
+          <input
+            className="p-2 w-full rounded-md"
+            placeholder="Temperature?"
+            min={-10}
+            max={45}
+            type="number"
+          />
+        </div>
+
+        <div className="my-5">
+          <input
+            className="p-2 w-full rounded-md"
+            placeholder="Number of drink consumed per day?"
+            min={0}
+            max={20}
+            type="number"
+          />
+        </div>
+
+        <div className="my-5">
+          <input
+            className="p-2 w-full rounded-md"
+            placeholder="Number of drinks consumed today?"
+            min={0}
+            max={20}
+            type="number"
+          />
+        </div>
+
+        <div className="my-5">
+          <select className="p-2 w-full rounded-md">
             <option selected disabled value={"female"}>
               Gender
             </option>
@@ -55,12 +89,8 @@ function App() {
           </select>
         </div>
 
-        <div>
-          <input placeholder="Age" min={1} max={90} type="number" />
-        </div>
-
-        <div>
-          <select>
+        <div className="my-5">
+          <select className="p-2 w-full rounded-md">
             <option selected disabled>
               Sensitive to Caffeine?
             </option>
@@ -70,8 +100,8 @@ function App() {
           </select>
         </div>
 
-        <div>
-          <select>
+        <div className="my-5">
+          <select className="p-2 w-full rounded-md">
             <option selected disabled>
               Time of day?
             </option>
@@ -81,8 +111,8 @@ function App() {
           </select>
         </div>
 
-        <div>
-          <select>
+        <div className="my-5">
+          <select className="p-2 w-full rounded-md">
             <option selected disabled>
               Pregnant?
             </option>
@@ -92,32 +122,14 @@ function App() {
           </select>
         </div>
 
-        <div>
-          <select>
+        <div className="my-5">
+          <select className="p-2 w-full rounded-md">
             <option selected disabled>
               Health conscious?
             </option>
             <option value={"Yes"}>Yes</option>
             <option value={"No"}>No</option>
           </select>
-        </div>
-
-        <div>
-          <input
-            placeholder="Number of drink consumed per day?"
-            min={0}
-            max={20}
-            type="number"
-          />
-        </div>
-
-        <div>
-          <input
-            placeholder="Number of drinks consumed today?"
-            min={0}
-            max={20}
-            type="number"
-          />
         </div>
       </div>
     </Provider>

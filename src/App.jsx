@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 // import "./App.css";
 
 // store - redux
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./store/store";
 import { getData } from "./services/fetch_drink_choice_model";
 import QueryForm from "./components/form";
+import QeuryResult from "./components/result";
 
 function App() {
   const [apidata, setApiData] = useState(null);
@@ -36,18 +37,14 @@ function App() {
         </div>
       )}
 
-      <div className="flex-row inline-flex w-full ">
+      <div className="flex-row my-5 inline-flex w-full ">
         {/*  */}
         <QueryForm setApiResult={setApiResult} />
         {/*  */}
         {
-        // apiResult && 
-        (
-          <div className="bg-gray-200 h-12 w-4/12 mx-auto rounded-xl ">
-            <div>{apiResult?.timestamp}</div>
-            <div>{apiResult?.decision}</div>
-          </div>
-        )}
+          // apiResult &&
+          <QeuryResult />
+        }
       </div>
     </Provider>
   );

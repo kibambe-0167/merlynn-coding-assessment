@@ -8,7 +8,7 @@ function QueryForm({ setApiResult }) {
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
 
-  function onSubmit(event) {
+  function onSubmitHandle(event) {
     event.preventDefault();
     // console.log(formData);
     query_model(formData)
@@ -31,7 +31,7 @@ function QueryForm({ setApiResult }) {
   //
   return (
     <form
-      onSubmit={(event) => onSubmit(event)}
+      onSubmit={(event) => onSubmitHandle(event)}
       className="bg-blue-900 shadow-slate-950 w-6/12 mx-auto px-4 py-4 rounded-xl"
     >
       <div className="my-5">

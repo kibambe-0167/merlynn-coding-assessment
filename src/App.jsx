@@ -8,18 +8,21 @@ import { getData } from "./services/fetch_drink_choice_model";
 
 function App() {
   const [apidata, setApiData] = useState(null);
+  const [formData, setFormData] = useState({});
   //
   useEffect(() => {
     getData()
       .then((res) => {
         const d = res;
-        // if (res) {
         setApiData(d?.data?.attributes);
-        console.log(d?.data?.attributes);
-        // }
       })
       .catch((err) => console.log(err));
   }, []);
+
+  function onSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
 
   //
   return (
@@ -29,17 +32,21 @@ function App() {
       </h1>
 
       {apidata && (
-        <div>
-          <h2 className="text-2xl text-black font-medium">{apidata?.name}</h2>
-          <p className="text-lg text-black font-medium">
+        <div className="px-3">
+          <h2 className="text-3xl text-black font-medium">{apidata?.name}</h2>
+          <p className="text-sm text-gray-700 font-medium">
             {apidata.description}
           </p>
         </div>
       )}
 
-      <div className="bg-blue-900 shadow-slate-950 w-8/12 my-5 mx-auto px-4 py-4 rounded-2xl">
+      <form
+        onSubmit={(event) => onSubmit(event)}
+        className="bg-blue-900 shadow-slate-950 w-8/12 my-5 mx-auto px-4 py-4 rounded-2xl"
+      >
         <div className="my-5">
           <input
+            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
             className="p-2 w-full rounded-md"
             placeholder="Age?"
             min={1}
@@ -50,6 +57,9 @@ function App() {
 
         <div className="my-5">
           <input
+            onChange={(e) =>
+              setFormData({ ...formData, temperature: e.target.value })
+            }
             className="p-2 w-full rounded-md"
             placeholder="Temperature?"
             min={-10}
@@ -60,6 +70,9 @@ function App() {
 
         <div className="my-5">
           <input
+            onChange={(e) =>
+              setFormData({ ...formData, drink_per_day: e.target.value })
+            }
             className="p-2 w-full rounded-md"
             placeholder="Number of drink consumed per day?"
             min={0}
@@ -70,6 +83,9 @@ function App() {
 
         <div className="my-5">
           <input
+            onChange={(e) =>
+              setFormData({ ...formData, drink_consumed_today: e.target.value })
+            }
             className="p-2 w-full rounded-md"
             placeholder="Number of drinks consumed today?"
             min={0}
@@ -79,18 +95,27 @@ function App() {
         </div>
 
         <div className="my-5">
-          <select className="p-2 w-full rounded-md">
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, gender: e.target.value })
+            }
+            className="p-2 w-full rounded-md"
+          >
             <option selected disabled value={"female"}>
               Gender
             </option>
             <option value={"female"}>Female</option>
             <option value={"male"}>Male</option>
-            <option value={"other"}>Other</option>
           </select>
         </div>
 
         <div className="my-5">
-          <select className="p-2 w-full rounded-md">
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, sensitive_caffeine: e.target.value })
+            }
+            className="p-2 w-full rounded-md"
+          >
             <option selected disabled>
               Sensitive to Caffeine?
             </option>
@@ -101,7 +126,12 @@ function App() {
         </div>
 
         <div className="my-5">
-          <select className="p-2 w-full rounded-md">
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, time_of_day: e.target.value })
+            }
+            className="p-2 w-full rounded-md"
+          >
             <option selected disabled>
               Time of day?
             </option>
@@ -112,7 +142,12 @@ function App() {
         </div>
 
         <div className="my-5">
-          <select className="p-2 w-full rounded-md">
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, pregnant: e.target.value })
+            }
+            className="p-2 w-full rounded-md"
+          >
             <option selected disabled>
               Pregnant?
             </option>
@@ -123,7 +158,12 @@ function App() {
         </div>
 
         <div className="my-5">
-          <select className="p-2 w-full rounded-md">
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, health_conscious: e.target.value })
+            }
+            className="p-2 w-full rounded-md"
+          >
             <option selected disabled>
               Health conscious?
             </option>
@@ -131,7 +171,11 @@ function App() {
             <option value={"No"}>No</option>
           </select>
         </div>
-      </div>
+
+        <div className="w-full my-4">
+          <button className="bg-white w-full py-2 rounded-md">Query</button>
+        </div>
+      </form>
     </Provider>
   );
 }

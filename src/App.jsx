@@ -54,7 +54,10 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, INPUTVAR3: e.target.value })
+              setFormData({
+                ...formData,
+                INPUTVAR3: parseFloat(e.target.value),
+              })
             }
             className="p-2 w-full rounded-md"
             placeholder="Age?"
@@ -67,7 +70,10 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, INPUTVAR1: e.target.value })
+              setFormData({
+                ...formData,
+                INPUTVAR1: parseFloat(e.target.value),
+              })
             }
             className="p-2 w-full rounded-md"
             placeholder="Temperature?"
@@ -80,7 +86,10 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, INPUTVAR8: e.target.value })
+              setFormData({
+                ...formData,
+                INPUTVAR8: parseFloat(e.target.value),
+              })
             }
             className="p-2 w-full rounded-md"
             placeholder="Number of drink consumed per day?"
@@ -93,7 +102,10 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, INPUTVAR9: e.target.value })
+              setFormData({
+                ...formData,
+                INPUTVAR9: parseFloat(e.target.value),
+              })
             }
             className="p-2 w-full rounded-md"
             placeholder="Number of drinks consumed today?"
@@ -113,8 +125,8 @@ function App() {
             <option selected disabled value={"female"}>
               Gender
             </option>
-            <option value={"female"}>Female</option>
-            <option value={"male"}>Male</option>
+            <option value={"Female"}>Female</option>
+            <option value={"Male"}>Male</option>
           </select>
         </div>
 
@@ -129,7 +141,7 @@ function App() {
               Sensitive to Caffeine?
             </option>
             <option value={"Yes"}>Yes</option>
-            <option value={"No"}>Male</option>
+            <option value={"No"}>No</option>
             <option value={"Not sure"}>Not sure</option>
           </select>
         </div>

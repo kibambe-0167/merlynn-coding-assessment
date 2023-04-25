@@ -30,30 +30,32 @@ export async function query_model(formdata) {
   myHeaders.append("Authorization", "Token 9307bfd5fa011428ff198bb37547f979");
   myHeaders.append("Content-Type", "application/vnd.api+json");
 
-  var raw = {
+  var raw = JSON.stringify({
     data: {
       type: "scenario",
       attributes: {
-        input: formdata,
+        input: formdata
       },
     },
-  };
+  });
 
   var requestOptions = {
     method: "POST",
     headers: myHeaders,
-    body: formdata,
+    body: raw,
     redirect: "follow",
   };
 
   var res = null;
-  // 
-  await fetch(`${_base_url}/decision/${_model_id}`, requestOptions)
+
+  await fetch(
+    "https://api.up2tom.com/v3/decision/58d3bcf97c6b1644db73ad12",
+    requestOptions
+  )
     .then((response) => response.json())
     .then((result) => {
       res = result;
     })
     .catch((error) => console.log("error", error));
-
   return res;
 }

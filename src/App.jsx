@@ -45,7 +45,6 @@ function App() {
         (
           <div className="bg-gray-200 h-12 w-4/12 mx-auto rounded-xl ">
             <div>{apiResult?.timestamp}</div>
-
             <div>{apiResult?.decision}</div>
           </div>
         )}

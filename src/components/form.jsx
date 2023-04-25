@@ -10,12 +10,11 @@ function QueryForm({ setApiResult }) {
 
   function onSubmit(event) {
     event.preventDefault();
-
+    // console.log(formData);
     query_model(formData)
       .then((res) => {
         setApiResult(res?.data?.attributes);
         // console.log(res?.data?.attributes);
-
         dispatch(
           addResult({
             date: res?.data?.attributes?.timestamp,
@@ -33,7 +32,7 @@ function QueryForm({ setApiResult }) {
   return (
     <form
       onSubmit={(event) => onSubmit(event)}
-      className="bg-blue-900 shadow-slate-950 w-6/12 mx-auto px-4 py-4 rounded-2xl"
+      className="bg-blue-900 shadow-slate-950 w-6/12 mx-auto px-4 py-4 rounded-xl"
     >
       <div className="my-5">
         <input

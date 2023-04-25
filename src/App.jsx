@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 // import "./App.css";
 
 // store - redux
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store/store";
-import { getData, query_model } from "./services/fetch_drink_choice_model";
-import { addResult } from "./store/apiresults";
+import { getData } from "./services/fetch_drink_choice_model";
 import QueryForm from "./components/form";
 
 function App() {
   const [apidata, setApiData] = useState(null);
   const [apiResult, setApiResult] = useState(null);
-  const [formData, setFormData] = useState({});
-  const dispatch = useDispatch();
   //
   useEffect(() => {
     getData()
@@ -22,27 +19,6 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  function onSubmit(event) {
-    event.preventDefault();
-
-    query_model(formData)
-      .then((res) => {
-        setApiResult(res?.data?.attributes);
-        console.log(res?.data?.attributes);
-
-        dispatch(
-          addResult({
-            date: res?.data?.attributes?.timestamp,
-            decision: res?.data?.attributes?.decision,
-            user: formData,
-          })
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   //
   return (
@@ -61,10 +37,13 @@ function App() {
       )}
 
       <div className="flex-row inline-flex w-full ">
+        {/*  */}
         <QueryForm setApiResult={setApiResult} />
-
-        {apiResult && (
-          <div className="bg-blue-900 w-4/12 mx-auto rounded-2xl ">
+        {/*  */}
+        {
+        // apiResult && 
+        (
+          <div className="bg-gray-200 h-12 w-4/12 mx-auto rounded-xl ">
             <div>{apiResult?.timestamp}</div>
 
             <div>{apiResult?.decision}</div>

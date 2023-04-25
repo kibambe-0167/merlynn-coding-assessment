@@ -16,12 +16,13 @@ export async function getData() {
 
   var res = null;
 
-  await fetch(`${_base_url}/model/${_model_id}`, requestOptions)
+  await fetch(`https://api.up2tom.com/v3/models/${_model_id}`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       res = result;
     })
-    .catch((error) => console.warn("error", error));
+    .catch((error) => console.log("error", error));
+
   return res;
 }
 
@@ -34,7 +35,7 @@ export async function query_model(formdata) {
     data: {
       type: "scenario",
       attributes: {
-        input: formdata
+        input: formdata,
       },
     },
   });

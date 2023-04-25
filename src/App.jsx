@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // store - redux
 import { Provider } from "react-redux";
 import store from "./store/store";
-import { getData } from "./services/fetch_drink_choice_model";
+import { getData, query_model } from "./services/fetch_drink_choice_model";
 
 function App() {
   const [apidata, setApiData] = useState(null);
@@ -21,7 +21,14 @@ function App() {
 
   function onSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+
+    query_model(formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //
@@ -46,7 +53,9 @@ function App() {
       >
         <div className="my-5">
           <input
-            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, INPUTVAR3: e.target.value })
+            }
             className="p-2 w-full rounded-md"
             placeholder="Age?"
             min={1}
@@ -58,7 +67,7 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, temperature: e.target.value })
+              setFormData({ ...formData, INPUTVAR1: e.target.value })
             }
             className="p-2 w-full rounded-md"
             placeholder="Temperature?"
@@ -71,7 +80,7 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, drink_per_day: e.target.value })
+              setFormData({ ...formData, INPUTVAR8: e.target.value })
             }
             className="p-2 w-full rounded-md"
             placeholder="Number of drink consumed per day?"
@@ -84,7 +93,7 @@ function App() {
         <div className="my-5">
           <input
             onChange={(e) =>
-              setFormData({ ...formData, drink_consumed_today: e.target.value })
+              setFormData({ ...formData, INPUTVAR9: e.target.value })
             }
             className="p-2 w-full rounded-md"
             placeholder="Number of drinks consumed today?"
@@ -97,7 +106,7 @@ function App() {
         <div className="my-5">
           <select
             onChange={(e) =>
-              setFormData({ ...formData, gender: e.target.value })
+              setFormData({ ...formData, INPUTVAR2: e.target.value })
             }
             className="p-2 w-full rounded-md"
           >
@@ -112,7 +121,7 @@ function App() {
         <div className="my-5">
           <select
             onChange={(e) =>
-              setFormData({ ...formData, sensitive_caffeine: e.target.value })
+              setFormData({ ...formData, INPUTVAR4: e.target.value })
             }
             className="p-2 w-full rounded-md"
           >
@@ -128,7 +137,7 @@ function App() {
         <div className="my-5">
           <select
             onChange={(e) =>
-              setFormData({ ...formData, time_of_day: e.target.value })
+              setFormData({ ...formData, INPUTVAR5: e.target.value })
             }
             className="p-2 w-full rounded-md"
           >
@@ -144,7 +153,7 @@ function App() {
         <div className="my-5">
           <select
             onChange={(e) =>
-              setFormData({ ...formData, pregnant: e.target.value })
+              setFormData({ ...formData, INPUTVAR6: e.target.value })
             }
             className="p-2 w-full rounded-md"
           >
@@ -160,7 +169,7 @@ function App() {
         <div className="my-5">
           <select
             onChange={(e) =>
-              setFormData({ ...formData, health_conscious: e.target.value })
+              setFormData({ ...formData, INPUTVAR7: e.target.value })
             }
             className="p-2 w-full rounded-md"
           >

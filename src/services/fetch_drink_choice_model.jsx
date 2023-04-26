@@ -1,4 +1,3 @@
-const _base_url = "https://api.up2tom.com/v3";
 const _model_id = "58d3bcf97c6b1644db73ad12";
 //
 //

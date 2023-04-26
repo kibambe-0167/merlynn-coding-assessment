@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./App.css";
 
 // store - redux
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store/store";
 import { getData } from "./services/fetch_drink_choice_model";
 import QueryForm from "./components/form";
@@ -39,11 +39,11 @@ function App() {
 
       <div className="flex-row my-5 inline-flex w-full ">
         {/*  */}
-        <QueryForm setApiResult={setApiResult} />
+        <QueryForm setApiResult={setApiResult} apiResult={apiResult} />
         {/*  */}
         {
-          // apiResult &&
-          <QeuryResult />
+          apiResult &&
+          <QeuryResult apiResult={apiResult} />
         }
       </div>
     </Provider>

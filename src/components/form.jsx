@@ -9,12 +9,12 @@ function QueryForm({ setApiResult }) {
   const dispatch = useDispatch();
 
   function onSubmitHandle(event) {
+    console.log("send");
     event.preventDefault();
     // console.log(formData);
     query_model(formData)
       .then((res) => {
         setApiResult(res?.data?.attributes);
-        // console.log(res?.data?.attributes);
         dispatch(
           addResult({
             date: res?.data?.attributes?.timestamp,

@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     getData()
       .then((res) => {
-        // console.log(res);
         setApiData(res?.data?.attributes);
       })
       .catch((err) => console.log(err));
